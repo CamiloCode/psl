@@ -14,10 +14,28 @@ public class AutomationTest {
 
 		System.setProperty("webdriver.gecko.driver", "geckodriver.exe");	
 		WebDriver driver = new FirefoxDriver();
+
 		driver.manage().window().maximize();
+		
+		//nice record
 		driver.get("http://automatizacion.herokuapp.com/ocontreras/");		
 		PageObject.agendarCitas(driver).click();
-		PageObject.datePicker(driver).click();
+		PageObject.datePicker(driver).sendKeys("01/16/2017");
+		PageObject.patientID(driver).sendKeys("1120");
+		PageObject.doctorID(driver).sendKeys("1121");
+		PageObject.saveButton(driver).click();
+		String test = PageObject.goodText(driver).getText();
+		System.out.println(test);
+		
+		//wrong record
+		driver.get("http://automatizacion.herokuapp.com/ocontreras/");		
+		PageObject.agendarCitas(driver).click();
+		PageObject.datePicker(driver).sendKeys("01/16/2017");
+		PageObject.patientID(driver).sendKeys("1120");
+		PageObject.doctorID(driver).sendKeys("1122");
+		PageObject.saveButton(driver).click();
+		test = PageObject.errorText(driver).getText();
+		System.out.println(test);
 		driver.quit();
 
 	}
