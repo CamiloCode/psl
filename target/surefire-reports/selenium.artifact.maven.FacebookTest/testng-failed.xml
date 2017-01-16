@@ -5,7 +5,7 @@
     <classes>
       <class name="selenium.artifact.maven.FacebookTest">
         <methods>
-          <include name="TestChrome"/>
+          <include name="TestFireFox"/>
         </methods>
       </class> <!-- selenium.artifact.maven.FacebookTest -->
     </classes>
